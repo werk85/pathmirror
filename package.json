@@ -1,6 +1,6 @@
 {
   "name": "pathmirror",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Advanced key mirror function that can mirror nested object keys.",
   "main": "lib/index.js",
   "scripts": {
