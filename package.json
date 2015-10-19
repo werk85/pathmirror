@@ -7,7 +7,8 @@
     "test": "mocha --compilers js:babel/register --recursive",
     "test:watch": "npm test -- --watch",
     "webpack": "webpack",
-    "prepublish": "npm test && webpack -p"
+    "prepublish": "npm test && webpack -p",
+    "coverage": "babel-node node_modules/.bin/isparta cover --report text --report html node_modules/.bin/_mocha -- --reporter dot"
   },
   "keywords": [
     "key",
@@ -28,6 +29,7 @@
     "babel-loader": "^5.3.2",
     "eslint_d": "^2.1.2",
     "expect": "^1.12.2",
+    "isparta": "^3.1.0",
     "mocha": "^2.3.3",
     "webpack": "^1.12.2"
   }
