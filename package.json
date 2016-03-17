@@ -4,13 +4,14 @@
   "description": "Advanced key mirror function that can mirror nested object keys.",
   "main": "lib/index.js",
   "scripts": {
-    "lint": "eslint .",
-    "test": "mocha --compilers js:babel-register --recursive",
-    "test:watch": "npm test -- --watch",
-    "webpack": "webpack",
     "build": "webpack && webpack -p",
-    "prepublish": "npm run lint && npm test && npm run build",
-    "coverage": "babel-node node_modules/.bin/isparta cover --report text --report html node_modules/.bin/_mocha -- --reporter dot"
+    "coverage": "babel-node node_modules/.bin/isparta cover --report text --report html node_modules/.bin/_mocha -- --reporter dot",
+    "lint": "eslint .",
+    "mocha": "mocha --compilers js:babel-register --recursive",
+    "prepublish": "npm test && npm run build",
+    "test": "npm run lint && npm run mocha",
+    "test:watch": "npm run mocha -- --watch",
+    "webpack": "webpack"
   },
   "keywords": [
     "key",

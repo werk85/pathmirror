@@ -1,5 +1,7 @@
 # pathmirror
 
+[![Build Status](https://travis-ci.org/werk85/pathmirror.svg?branch=master)](https://travis-ci.org/werk85/pathmirror)
+
 Advanced key mirror function that can mirror nested object keys. Intended for the generation of flux action type names.
 
 ## Installation
