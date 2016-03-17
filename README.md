@@ -67,7 +67,7 @@ const mirrored = pathMirror({
 console.log(mirrored.foo.bar.baz); // prefix/FOO_BAR_BAZ/suffix
 ```
 
-For more advanced scenarios each string option can be a function which is called with the resulting path.
+For more advanced scenarios each string option can be a function which is called with the final path as string array.
 
 ```js
 import pathMirror from 'pathmirror';
