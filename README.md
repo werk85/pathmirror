@@ -1,6 +1,6 @@
 # pathmirror
 
-Advanced key mirror function that can mirror nested object keys. Intended for the generation of flux action names.
+Advanced key mirror function that can mirror nested object keys. Intended for the generation of flux action type names.
 
 ## Installation
 
@@ -37,7 +37,54 @@ const mirrored = pathMirror({
     }
 }, '.');
 
-console.log(foo.bar.baz); // foo.bar.baz
+console.log(mirrored.foo.bar.baz); // foo.bar.baz
+```
+
+### Advanced Options
+
+There are several hooks to manipulate the produced output.
+
+For example can you add a prefix or suffix to your created paths, change the separator or transform the path before creating the `mirrored` object.
+
+```js
+import pathMirror from 'pathmirror';
+
+const mirrored = pathMirror({
+    foo: {
+        bar: {
+            baz: null
+        }
+    }
+}, {
+    separator: '_',
+    prefix: 'prefix/',
+    suffix: '/suffix',
+    transform: (key, value, path) => key.toUpperCase()
+});
+
+console.log(mirrored.foo.bar.baz); // prefix/FOO_BAR_BAZ/suffix
+```
+
+For more advanced scenarios each string option can be a function which is called with the resulting path.
+
+```js
+import pathMirror from 'pathmirror';
+
+const mirrored = pathMirror({
+    foo: {
+        bar: null
+    },
+    baz: {
+        foobar: null
+    }
+}, {
+    separator: (path) => path[0] === 'foo' ? ':' : '.',
+    prefix: (path) => path[0] === 'foo' ? '1/' : '2/',
+    suffix: (path) => path[1] === 'foobar' ? '/1' : '/2',
+});
+
+console.log(mirrored.foo.bar); // 1/foo:bar/2
+console.log(mirrored.baz.foobar); // 2/baz.foobar/1
 ```
 
 ## Use Case
@@ -45,6 +92,8 @@ console.log(foo.bar.baz); // foo.bar.baz
 This module is intended for generating hierachical action names when working with flux:
 
 ```js
+import pathMirror from 'pathmirror';
+
 const actions = pathMirror({
     APP: {
         INIT: null
@@ -69,5 +118,4 @@ console.log(actions);
     }
 }
  */
-}
 ```

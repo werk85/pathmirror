@@ -17,6 +17,8 @@
     "mirror",
     "actions",
     "action",
+    "types",
+    "type",
     "name",
     "constants",
     "flux",
