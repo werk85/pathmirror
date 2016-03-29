@@ -1,6 +1,6 @@
-import expect from 'expect';
+const expect = require('expect');
 
-import pathMirror from '../src/index';
+const pathMirror = require('../src/index');
 
 describe('pathMirror', function () {
   it('should mirror a flat object', function () {

@@ -2,7 +2,7 @@ const DEFAULT_SEPARATOR = '_';
 const DEFAULT_PREFIX = '';
 const DEFAULT_SUFFIX = '';
 
-export default function (obj, options = {}) {
+module.exports = function (obj, options = {}) {
   // Allow backwards compatibility with 1.0.0
   if (isString(options)) {
     options = { separator: options };
@@ -15,7 +15,7 @@ export default function (obj, options = {}) {
     transform: key => key,
     ...options
   });
-}
+};
 
 function walk(obj, options, path = []) {
   if (!isObject(obj)) {
